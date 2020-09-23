@@ -1,0 +1,13 @@
+.kc-navbar__container .nav-item{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.kc-navbar__container .ml-auto .anticon svg{
+  height: 25px;
+  width: 25px;
+  margin: 0 10px;
+}
+.kc-navbar__container .ant-input-affix-wrapper{
+  width: 400px;
+}
