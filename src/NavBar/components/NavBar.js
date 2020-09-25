@@ -4,9 +4,25 @@ import { Collapse, Navbar, NavbarToggler, Nav, NavItem, NavLink } from 'reactstr
 import { AppstoreOutlined, MenuOutlined, SearchOutlined, UndoOutlined, SettingOutlined, BorderBottomOutlined } from '@ant-design/icons';
 import {Input} from 'antd';
 import 'antd/dist/antd.css';
+import {connect} from "react-redux";
 
-export default class NavBar extends Component{
+class NavBar extends Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'Keep'
+    }
+  }
+
+  static getDerivedStateFromProps(props, state){
+    if(props.activeItem){
+      return {name: props.activeItem}
+    }
+    return state
+  }
+
   render() {
+    console.log('sidebar', this.props.activeItem);
     return(
       <>
         <div className='kc-navbar__container'>
@@ -18,8 +34,17 @@ export default class NavBar extends Component{
                   <MenuOutlined/>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="#">
-                    <img src="https://www.gstatic.com/images/branding/product/1x/keep_48dp.png" alt=""/>Keep
+                  <NavLink href="#" style={{display: 'flex', alignItems: 'center'}}>
+                    <img src="https://www.gstatic.com/images/branding/product/1x/keep_48dp.png" alt=""/>
+                    <p style={{
+                      margin: 0,
+                      width: '160px',
+                      fontFamily: "Product Sans',Arial,sans-serif",
+                      fontSize: '22px',
+                      paddingLeft: '8px'
+                    }}>
+                      {this.state.name}
+                    </p>
                   </NavLink>
                 </NavItem>
               </Nav>
@@ -50,3 +75,14 @@ export default class NavBar extends Component{
     )
   }
 }
+
+const mapStateToProps = (state) => ({
+  activeItem: state.sidebar.activeItem
+});
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
