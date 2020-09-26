@@ -22,7 +22,7 @@ class NavBar extends Component{
   }
 
   render() {
-    console.log('sidebar', this.props.activeItem);
+    const {name} = this.state;
     return(
       <>
         <div className='kc-navbar__container'>
@@ -34,17 +34,12 @@ class NavBar extends Component{
                   <MenuOutlined/>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="#" style={{display: 'flex', alignItems: 'center'}}>
+                  {
+                    name === 'Keep' &&
                     <img src="https://www.gstatic.com/images/branding/product/1x/keep_48dp.png" alt=""/>
-                    <p style={{
-                      margin: 0,
-                      width: '160px',
-                      fontFamily: "Product Sans',Arial,sans-serif",
-                      fontSize: '22px',
-                      paddingLeft: '8px'
-                    }}>
-                      {this.state.name}
-                    </p>
+                  }
+                  <NavLink href="#" style={{display: 'flex', alignItems: 'center', width: '15rem'}}>
+                    <h3>{name}</h3>
                   </NavLink>
                 </NavItem>
               </Nav>

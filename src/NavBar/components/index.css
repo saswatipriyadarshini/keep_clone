@@ -11,3 +11,10 @@
 .kc-navbar__container .ant-input-affix-wrapper{
   width: 400px;
 }
+.kc-navbar__container h3{
+  margin: 0;
+  width: 160px;
+  font-family: Product Sans ,Arial, sans-serif;
+  font-size: 22px;
+  padding-left: 8px;
+}
